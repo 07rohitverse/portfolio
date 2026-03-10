@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rohit Mishra | Developer Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f2027;
+color:white;
+transition:0.4s;
+}
+
+.light{
+background:#f5f5f5;
+color:black;
+}
+
+#particles{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:25px;
+padding:20px;
+background:rgba(0,0,0,0.4);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+header{
+text-align:center;
+padding:40px;
+}
+
+.profile{
+width:160px;
+border-radius:50%;
+border:5px solid white;
+}
+
+.typing{
+color:#ff4b2b;
+font-size:20px;
+margin-top:10px;
+}
+
+.container{
+width:85%;
+max-width:900px;
+margin:auto;
+}
+
+section{
+background:rgba(255,255,255,0.05);
+margin:20px 0;
+padding:25px;
+border-radius:15px;
+}
+
+h2{
+border-bottom:2px solid #ff4b2b;
+display:inline-block;
+margin-bottom:10px;
+}
+
+.skill{
+margin:12px 0;
+}
+
+.bar{
+background:#444;
+border-radius:20px;
+overflow:hidden;
+}
+
+.bar div{
+height:10px;
+background:#ff4b2b;
+}
+
+.project{
+background:rgba(255,255,255,0.08);
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+}
+
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#ff4b2b;
+color:white;
+text-decoration:none;
+border-radius:20px;
+border:none;
+cursor:pointer;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+border:none;
+}
+
+.toggle{
+position:fixed;
+top:15px;
+right:15px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<button class="btn toggle" onclick="toggleMode()">Mode</button>
+
+<nav>
+
+<a href="#about">About</a>
+<a href="Education.html">Education</a>
+<a href="Experience.html">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<header>
+
+<img src="mypic.jpeg" class="profile">
+
+<h1>Rohit Mishra</h1>
+
+<p class="typing" id="typing"></p>
+
+<a href="resume.pdf" class="btn">Download Resume</a>
+
+</header>
+
+<div class="container">
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<p>
+My name is Rohit Mishra. I am from Jaunpur, Uttar Pradesh.
+I am a BSc Computer Science student learning web development.
+My goal is to become a software engineer.
+</p>
+
+</section>
+
+<section>
+
+<h2>Skills</h2>
+
+<div class="skill">
+HTML
+<div class="bar"><div style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+CSS
+<div class="bar"><div style="width:70%"></div></div>
+</div>
+
+<div class="skill">
+JavaScript
+<div class="bar"><div style="width:40%"></div></div>
+</div>
+
+</section>
+
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="project">Portfolio Website using HTML & CSS</div>
+<div class="project">Simple Web Pages using HTML</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Me</h2>
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea rows="4" placeholder="Your Message"></textarea>
+
+<button class="btn">Send</button>
+
+</form>
+
+</section>
+
+</div>
+
+<footer>
+
+<p>© 2026 Rohit Mishra</p>
+
+</footer>
+
+<script>
+
+let text="I am a Web Developer";
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,100);
+
+}
+
+}
+
+typing();
+
+function toggleMode(){
+
+document.body.classList.toggle("light");
+
+}
+
+/* simple particles */
+
+const canvas=document.createElement("canvas");
+document.getElementById("particles").appendChild(canvas);
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2
+})
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+
+p.y+=0.3;
+
+if(p.y>canvas.height)p.y=0;
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+</script>
+
+</body>
+
+</html>
